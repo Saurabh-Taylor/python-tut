@@ -1,80 +1,70 @@
+# ── Python Data Types ──────────────────────────────────────────────────────────
+# Python is dynamically typed — variables don't need explicit type declarations.
+# Every value has a type, which you can inspect with type() or isinstance().
+
+
+# ── Primitives ─────────────────────────────────────────────────────────────────
+
 my_int = -4
-print("my_int::", my_int)
-print("type my_int::", type(my_int))
-
 my_float = -1.5
-print("my_float::", my_float)
-print("type my_float::", type(my_float))
-
-
 my_string = "Hello, Saurabh!"
-print("my_string::", my_string)
-
 my_boolean = True
-print("my_boolean::", my_boolean)
+my_none = None  # Represents the intentional absence of a value
+
+print(f"int     → {my_int}")
+print(f"float   → {my_float}")
+print(f"string  → {my_string}")
+print(f"boolean → {my_boolean}")
+print(f"none    → {my_none}")
 
 
-# Set - An unordered collection of unique elements,
-my_set = { # this is set literal 
-    "apple",
-    "banana",
-    1,
-    4.5,
-    1 # Duplicate element, will be ignored in the set
-}
+# ── Collections ────────────────────────────────────────────────────────────────
 
-my_set_2 = set(("saurabh", "this", "set")) # this is set constrctor
-print("my_set::", my_set)
-print("my_set_2::", my_set_2)
+# List — ordered, mutable, allows duplicates, supports mixed types
+my_list = [22, "hello world", 3.14, False]
+print(f"\nlist  → {my_list}")
 
-# Dictionary (object) - Key-value pairs, where keys are unique and values can be of any data type.
+# Tuple — ordered, immutable, allows duplicates
+# Use when data should not change (e.g. coordinates, RGB values)
+my_tuple = (1, 2, 3, "Hello", 4.5)
+print(f"tuple → {my_tuple}  |  tuple[3] = {my_tuple[3]}")
+
+# Set — unordered, mutable, unique elements only (duplicates are silently dropped)
+my_set = {"apple", "banana", 1, 4.5, 1}     # set literal  — duplicate 1 ignored
+my_set_2 = set(("saurabh", "this", "set"))  # set constructor
+print(f"set   → {my_set}")
+print(f"set 2 → {my_set_2}")
+
+# Dictionary — key-value pairs; keys must be unique and hashable
 my_dictionary = {
     "name": "Saurabh",
     "age": 30,
-    "city": "New York"
+    "city": "New York",
 }
-print("my_dictionary::", my_dictionary)
+print(f"dict  → {my_dictionary}")
 
-my_tuple = (1, 2, 3, "Hello", 4.5)
-print("my_tuple::", my_tuple[3])
-# Difference between tuple and set
-# 1. tuples are immutable, sets are mutable
-# 2. tuples are ordered, sets are unordered
-# 3. tuples allow duplicates, sets don't
-# 4. tuples are faster for iteration and indexing, sets use hash tables internally.
+# Range — generates a sequence of integers on demand (memory-efficient)
+# Commonly used in for-loops: for i in range(5)
+my_range = range(5)  # represents 0, 1, 2, 3, 4
+print(f"range → {my_range}  |  as list: {list(my_range)}")
 
 
-# range - sequence of numbers, often used in loops
-my_range = range(5)
-print("my_range::", my_range) #(0, 5)
-
-# List - An ordered collection of elements that supports different data types. 
-my_list = [22, "hello world", 3.14, False]
-print("my_list::", my_list)
-
-# None - A special value that represents the absence of a value.
-my_none = None
-print("my_none::", my_none)
-
-# type - to get the data type of a variable
-print(type(my_int))
-print(type(my_float))
-
-# isinstance - function lets you check if a variable matches a specific data type
-isStr = isinstance("Saurabh is here", str)
-print("isStr::", isStr)
-
-isint = isinstance(1, float)
-print("isint::", isint)
-
-developer = 'Naomi'
-
-result = developer.endswith('N') # ?
-print(result)
-print(3.14 + 1)
+# ── Tuple vs Set (quick reference) ─────────────────────────────────────────────
+# Tuple                          │ Set
+# ─────────────────────────────────────────────
+# Ordered (index access)         │ Unordered (no index)
+# Immutable                      │ Mutable
+# Allows duplicates              │ Unique elements only
+# Faster iteration               │ O(1) membership test via hash table
 
 
-def greet():
-    pass
+# ── Type Inspection ────────────────────────────────────────────────────────────
 
-greet()
+# type() — returns the exact type of a value
+print(f"\ntype(my_int)   → {type(my_int)}")
+print(f"type(my_float) → {type(my_float)}")
+
+# isinstance() — checks if a value is an instance of a given type (or types)
+# Preferred over type() when you want to allow subclasses
+print(f"isinstance('Saurabh', str) → {isinstance('Saurabh', str)}")
+print(f"isinstance(1, float)       → {isinstance(1, float)}")  # False — 1 is int, not float
